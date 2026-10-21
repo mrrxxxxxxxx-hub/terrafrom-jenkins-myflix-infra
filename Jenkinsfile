@@ -15,27 +15,27 @@ pipeline {
     TF_VAR_DB_PASSWORD = credentials{DB_PASSWORD}
 
      stages {
-        stage(Terraform Init) {
+        stage('Terraform Init') {
             steps {
                 echo 'terraform init is starting'
                 sh 'terraform init'
             }
         }
 
-        stage(Terraform Plan) {
+        stage('Terraform Plan') {
             steps {
                 echo 'Terraform Plan is starting'
                 sh 'terraform plan'
             }
         }
 
-        stage(Approval Button) {
+        stage('Approval Button') {
             steps {
                 input message: 'Please check your terraform plan', ok: 'proceed'
             }
         }
 
-        stage(Terraform Apply) {
+        stage('Terraform Apply') {
             steps {
                 echo 'Terraform apply is running'
                 sh 'terraform apply -auto-approve'
