@@ -38,11 +38,27 @@ pipeline {
             }
         }
 
-        stage('Terraform Destroy') {
+        stage('Terraform Apply') {
             steps {
-                echo 'Terraform destroy is running'
-                sh 'terraform destroy -auto-approve'
+                echo 'Terraform Apply is running'
+                sh 'terraform apply -auto-approve'
             }
         }
     }
+    post {
+        success {
+            echo 'Jenkins AWS infra is successfully start'
+            emailext to: 'tahsinrazagaya786@gmail.com'
+            subject: 'jenkis aws infra is successful'
+            body: 'aapka jenkins aws infra successfully run ho gaya hai'
+        }
+        failure {
+            echo 'jenkins aws infra is fail'
+            emailext to: 'tahsinrazagaya786@gmail.com'
+            subject: 'jenkins aws infra is fail'
+            body: 'jenkins aws infra fail ho gaya'
+        }
+    }                    
+
+
 }                                                                   
