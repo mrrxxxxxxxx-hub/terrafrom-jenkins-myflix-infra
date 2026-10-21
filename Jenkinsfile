@@ -6,13 +6,16 @@ pipeline {
         }
     }
     // All AWS credentials save here
-    AWS_ACCESS_KEY_ID = credentials{AWS_ACCESS_KEY_ID}
-    AWS_SECRET_ACCESS_KEY = credentials{AWS_SECRET_ACCESS_KEY}
-    DB_PASSWORD = credentials{DB_PASSWORD}
+    environment {
+            AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+            AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+            DB_PASSWORD = credentials('DB_PASSWORD')
     // TFVARS ADDED 
-    TF_VAR_AWS_ACCESS_KEY_ID = credentials{AWS_ACCESS_KEY_ID}
-    TF_VAR_AWS_SECRET_ACCESS_KEY = credentials{AWS_SECRET_ACCESS_KEY}
-    TF_VAR_DB_PASSWORD = credentials{DB_PASSWORD}
+            TF_VAR_AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+            TF_VAR_AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+            TF_VAR_DB_PASSWORD = credentials('DB_PASSWORD')
+    }        
+
 
      stages {
         stage('Terraform Init') {
