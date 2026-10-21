@@ -48,15 +48,11 @@ pipeline {
     post {
         success {
             echo 'Jenkins AWS infra is successfully start'
-            emailext to: 'tahsinrazagaya786@gmail.com'
-            subject: 'jenkis aws infra is successful'
-            body: 'aapka jenkins aws infra successfully run ho gaya hai'
+            emailext to: 'tahsinrazagaya786@gmail.com', subject: 'jenkis aws infra is successful', body: 'aapka jenkins aws infra successfully run ho gaya hai'      
         }
         failure {
             echo 'jenkins aws infra is fail'
-            emailext to: 'tahsinrazagaya786@gmail.com'
-            subject: 'jenkins aws infra is fail'
-            body: 'jenkins aws infra fail ho gaya'
+            emailext to: 'tahsinrazagaya786@gmail.com',subject: 'jenkins aws infra is fail', body: 'jenkins aws infra fail ho gaya'     
         }
     }                    
 
