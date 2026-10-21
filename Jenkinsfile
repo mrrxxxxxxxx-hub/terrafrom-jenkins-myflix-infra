@@ -38,10 +38,10 @@ pipeline {
             }
         }
 
-        stage('Terraform Apply') {
+        stage('Terraform Destroy') {
             steps {
-                echo 'Terraform apply is running'
-                sh 'terraform apply -auto-approve'
+                echo 'Terraform destroy is running'
+                sh 'terraform destroy -auto-approve'
             }
         }
     }
